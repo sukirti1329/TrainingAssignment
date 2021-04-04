@@ -1,16 +1,23 @@
 package com.training.uservalidation;
 
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Predicate;
 
 public class UserNameValidation {
 
-
-    public  void validateName(String userName){
-        if(validateNameLength(userName) && validateNameCaps(userName)){
-            System.out.println("Successfully Registered");
+    public  void validateUserName(List<String> userFullName){
+        AtomicBoolean validate = new AtomicBoolean(true);
+        userFullName.forEach(name ->
+        {
+           validate.set(validateNameLength(name) && validateNameCaps(name));
+        });
+        if(validate.get()){
+            System.out.println("Valid user name  " +userFullName.get(0)+ " " +userFullName.get(1));
         }else{
-            System.out.println("Name validation failed");
+            System.out.println("Sorry invalid user name  " +userFullName.get(0)+ " " +userFullName.get(1));
         }
+
     }
 
     private boolean validateNameLength(String userName){
