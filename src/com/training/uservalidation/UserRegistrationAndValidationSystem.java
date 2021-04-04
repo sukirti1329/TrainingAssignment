@@ -13,6 +13,12 @@ public class UserRegistrationAndValidationSystem {
         String userFullName = sc.next();
         UserNameValidation userNameValidation  = new UserNameValidation();
         userNameValidation.validateUserName(userNameSplitter(userFullName));
+
+        System.out.println("Please enter your emailId");
+        String userEmailId = sc.next();
+        UserEmailValidation userEmailValidation = new UserEmailValidation();
+        userEmailValidation.validateEmail(userEmailId);
+
     }
 
     private static List<String> userNameSplitter(String userName){
