@@ -11,7 +11,7 @@ public class UserRegistrationAndValidationSystem {
         Scanner sc = new Scanner(System.in).useDelimiter("\n");
         System.out.println("Please enter your full name");
         String userFullName = sc.next();
-        UserNameValidation userNameValidation  = new UserNameValidation();
+        UserNameValidation userNameValidation = new UserNameValidation();
         userNameValidation.validateUserName(userNameSplitter(userFullName));
 
         System.out.println("Please enter your emailId");
@@ -19,9 +19,20 @@ public class UserRegistrationAndValidationSystem {
         UserEmailValidation userEmailValidation = new UserEmailValidation();
         userEmailValidation.validateEmail(userEmailId);
 
+        System.out.println("Please enter your phone number");
+        String userPhoneNumber = sc.next();
+        UserPhoneValidation userPhoneValidation = new UserPhoneValidation();
+        userPhoneValidation.validatePhoneNo(userPhoneNumber);
+
+
+        System.out.println("Please enter your password");
+        String userPassword = sc.next();
+        UserPasswordValidation userPasswordValidation = new UserPasswordValidation();
+        userPasswordValidation.validateUserPassword(userPassword);
+
     }
 
-    private static List<String> userNameSplitter(String userName){
+    private static List<String> userNameSplitter(String userName) {
 
         List<String> userFullName = new ArrayList<String>();
         int firstSpace = userName.indexOf(" "); // detect the first space character
